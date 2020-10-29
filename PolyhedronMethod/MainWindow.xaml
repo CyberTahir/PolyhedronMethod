@@ -6,22 +6,52 @@
         xmlns:local="clr-namespace:PolyhedronMethod"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
-    <Grid>
-        <Label Margin="366,71,320,336" Width="114" Height="27">Введите данные!</Label>
+    <Grid Name="Container">
 
-        <Label Margin="218,150,374,257" Width="208" Height="27">Коэффициент отражения:</Label>
-        <TextBox Name="Alpha" Margin="426,154,225,260" Width="149" Height="20"></TextBox>
+        <ListBox Name="Log" Margin="263,94,263,120"></ListBox>
 
-        <Label Margin="218,186,374,221" Width="208" Height="27">Коэффициент сжатия:</Label>
-        <TextBox Name="Beta" Margin="426,190,225,225" Width="149" Height="20"></TextBox>
+        <Grid Name="Data" Margin="263,130,263,199">
+			<Grid.RowDefinitions>
+				<RowDefinition></RowDefinition>
+				<RowDefinition></RowDefinition>
+				<RowDefinition></RowDefinition>
+				<RowDefinition></RowDefinition>
+				<RowDefinition></RowDefinition>
+				<RowDefinition></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition></ColumnDefinition>
+				<ColumnDefinition></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Label Width="114" Height="27" Grid.Row="0" Grid.ColumnSpan="2">Введите данные!</Label>
 
-        <Label Margin="218,222,374,185" Width="208" Height="27">Коэффициент растяжения:</Label>
-        <TextBox Name="Gamma" Margin="426,226,225,189" Width="149" Height="20"></TextBox>
+			<Label Width="208" Height="27" Grid.Row="2" Grid.Column="0">Коэффициент отражения:</Label>
+			<TextBox Name="Alpha" Width="149" Height="20" Grid.Row="2" Grid.Column="1">1</TextBox>
 
-        <Label Margin="218,258,374,149" Width="208" Height="27">Эпсилон:</Label>
-        <TextBox Name="Epsilon" Margin="426,262,225,153" Width="149" Height="20"></TextBox>
+			<Label Width="208" Height="27" Grid.Row="3" Grid.Column="0">Коэффициент сжатия:</Label>
+			<TextBox Name="Beta" Width="149" Height="20" Grid.Row="3" Grid.Column="1">0,5</TextBox>
 
-        <Button Name="Test1" Margin="226,330,414,65" Width="100" Height="30" Click="Test1_Click">Тест 1</Button>
-        <Button Name="Test2" Margin="426,330,214,65" Width="100" Height="30">Тест 2</Button>
+			<Label Width="208" Height="27" Grid.Row="4" Grid.Column="0">Коэффициент растяжения:</Label>
+			<TextBox Name="Gamma" Width="149" Height="20" Grid.Row="4" Grid.Column="1">2</TextBox>
+
+			<Label Width="208" Height="27" Grid.Row="5" Grid.Column="0">Эпсилон:</Label>
+            <TextBox Name="Epsilon" Width="149" Height="20" Grid.Row="5" Grid.Column="1">0,05</TextBox>
+        </Grid>
+
+		<Grid Name="Btn" Margin="336,469,336,37">
+			<Grid.RowDefinitions>
+				<RowDefinition></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition></ColumnDefinition>
+				<ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+
+			<Button Name="Test1" Width="100" Height="30" Grid.Row="0" Grid.Column="0" Click="Test1_Click">Тест 1</Button>
+			<Button Name="Test2" Width="100" Height="30" Grid.Row="0" Grid.Column="1" Click="Test2_Click">Тест 2</Button>
+            <Button Name="NewTest" Width="100" Height="30" Grid.Row="0" Grid.Column="2" Click="NewTest_Click">Новый тест</Button>
+		</Grid>
+        
     </Grid>
 </Window>
