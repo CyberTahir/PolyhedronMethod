@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
     <Grid Name="Container">
-
         <ListBox Name="Log" Margin="263,94,263,120"></ListBox>
 
         <Grid Name="Data" Margin="263,130,263,199">
@@ -45,11 +44,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Name="Test1" Width="100" Height="30" Grid.Row="0" Grid.Column="0" Click="Test1_Click">Тест 1</Button>
-            <Button Name="Test2" Width="100" Height="30" Grid.Row="0" Grid.Column="1" Click="Test2_Click">Тест 2</Button>
+            <Button x:Name="Test1" Width="100" Height="30" Grid.Row="0" Grid.Column="0" Click="Test1_Click">Тест 1</Button>
+            <Button x:Name="Test2" Width="100" Height="30" Grid.Row="0" Grid.Column="1" Click="Test2_Click">Тест 2</Button>
+            <Button x:Name="NewTest" Width="100" Height="30" Grid.Row="0" Grid.Column="2" Click="NewTest_Click">Новый тест</Button>
         </Grid>
-
     </Grid>
 </Window>

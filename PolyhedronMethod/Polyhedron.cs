@@ -7,7 +7,7 @@ using System.Linq;
 namespace PolyhedronMethod
 {
     internal delegate double map(double[] x);
-    class Polyhedron
+    internal class Polyhedron
     {
         private map function;
         private double[][] X;
@@ -24,9 +24,7 @@ namespace PolyhedronMethod
         private double[] center;
 
         private int l, h, k;
-
         public ObservableCollection<ListBoxItem> Log { get; }
-        private string logText;
 
         public Polyhedron(map f, double[][] dots, double a, double b, double c, double e)
         {
@@ -52,9 +50,8 @@ namespace PolyhedronMethod
 
             l = 0;
             h = 0;
-            k = 0;
+            k = 1;
 
-            logText = "";
             Log.Clear();
         }
 
@@ -65,27 +62,27 @@ namespace PolyhedronMethod
 
         private double[] Reflect(double[] x1, double[] x2)
         {
-            double[] result = (double[])x1.Select((x, i) => x + alpha * (x - x2[i]));
+            double[] result = x1.Select((x, i) => x + alpha * (x - x2[i])).ToArray();
 
-            logText += "Выполнено отражение: " + ArrToString(result) + "\n";
+            WriteLog(Brushes.LightGray, "Выполнено отражение: " + ArrToString(result));
 
             return result;
         }
 
         private double[] Compress(double[] x1, double[] x2)
         {
-            double[] result = (double[])x1.Select((x, i) => x + beta * (x2[i] - x));
+            double[] result = x1.Select((x, i) => x + beta * (x2[i] - x)).ToArray();
 
-            logText += "Выполнено сжатие: " + ArrToString(result) + "\n";
+            WriteLog(Brushes.LightGray, "Выполнено сжатие: " + ArrToString(result));
 
             return result;
         }
 
         private double[] Stretch(double[] x1, double[] x2)
         {
-            double[] result = (double[])x1.Select((x, i) => x + gamma * (x2[i] - x));
+            double[] result = x1.Select((x, i) => x + gamma * (x2[i] - x)).ToArray();
 
-            logText += "Выполнено растяжение: " + ArrToString(result) + "\n";
+            WriteLog(Brushes.LightGray, "Выполнено растяжение: " + ArrToString(result));
 
             return result;
         }
@@ -105,7 +102,7 @@ namespace PolyhedronMethod
                 }
             }
 
-            logText += "Выполнена редукция\n";
+            WriteLog(Brushes.LightGray, "Выполнена редукция");
         }
 
         private void FindDots()
@@ -156,8 +153,8 @@ namespace PolyhedronMethod
                 }
             }
 
-            logText += "Лучшая точка xl = " + ArrToString(xl) + "\n";
-            logText += "Худшая точка xh = " + ArrToString(xh) + "\n";
+            WriteLog(Brushes.LightGray, "Лучшая точка xl = " + ArrToString(xl));
+            WriteLog(Brushes.LightGray, "Худшая точка xh = " + ArrToString(xh));
         }
 
         private void FindGravityCenter()
@@ -175,7 +172,7 @@ namespace PolyhedronMethod
                 center[i] /= n;
             }
 
-            logText += "Центр тяжести x2 = " + ArrToString(center) + "\n";
+            WriteLog(Brushes.LightGray, "Центр тяжести x2 = " + ArrToString(center));
         }
 
         private bool EndProccess()
@@ -208,19 +205,19 @@ namespace PolyhedronMethod
                 if (y4 < function(xl))
                 {
                     X[h] = x4;
-                    logText += "Заменяем вершину xh на вершину x4";
+                    WriteLog(Brushes.LightGray, "Заменяем вершину xh на вершину x4");
                 }
                 else
                 {
                     X[h] = x3;
-                    logText += "Заменяем вершину xh на вершину x3";
+                    WriteLog(Brushes.LightGray, "Заменяем вершину xh на вершину x3");
                 }
             }
             else if (function(xs) < y3 && y3 <= function(xh))
             {
                 x4 = Compress(center, xh);
                 X[h] = x4;
-                logText += "Заменяем вершину xh на вершину x5";
+                WriteLog(Brushes.LightGray, "Заменяем вершину xh на вершину x5");
             }
             else if (y3 > function(xh))
             {
@@ -236,37 +233,23 @@ namespace PolyhedronMethod
             return true;
         }
 
-        private void WriteLog()
+        private void WriteLog(Brush brush, string Text)
         {
             Log.Add(new ListBoxItem
             {
-                Background = Brushes.LightBlue,
-                Content = "Итерация " + Convert.ToString(k) + ":"
+                Background = brush,
+                Content = Text
             });
-
-            Log.Add(new ListBoxItem
-            {
-                Background = Brushes.LightGray,
-                Content = logText
-            });
-
-            logText = "";
         }
 
         public void FindExtr()
         {
-            while (DoCycle())
+            do
             {
-                WriteLog();
-            }
+                WriteLog(Brushes.LightBlue, string.Format("Итерация {0}:", k));
+            } while (DoCycle());
 
-            Log.Add(new ListBoxItem
-            {
-                Background = Brushes.LightGreen,
-                Content = "Найдена лучшая вершина x* = " + ArrToString(xl)
-            });
-
-            logText = "";
+            WriteLog(Brushes.LightGreen, "Найдена лучшая вершина x* = " + ArrToString(xl));
         }
     }
 }
