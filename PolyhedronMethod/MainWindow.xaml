@@ -11,47 +11,45 @@
         <ListBox Name="Log" Margin="263,94,263,120"></ListBox>
 
         <Grid Name="Data" Margin="263,130,263,199">
-			<Grid.RowDefinitions>
-				<RowDefinition></RowDefinition>
-				<RowDefinition></RowDefinition>
-				<RowDefinition></RowDefinition>
-				<RowDefinition></RowDefinition>
-				<RowDefinition></RowDefinition>
-				<RowDefinition></RowDefinition>
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition></ColumnDefinition>
-				<ColumnDefinition></ColumnDefinition>
-			</Grid.ColumnDefinitions>
-			<Label Width="114" Height="27" Grid.Row="0" Grid.ColumnSpan="2">Введите данные!</Label>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,0,44" Grid.RowSpan="2">Введите данные!</Label>
 
-			<Label Width="208" Height="27" Grid.Row="2" Grid.Column="0">Коэффициент отражения:</Label>
-			<TextBox Name="Alpha" Width="149" Height="20" Grid.Row="2" Grid.Column="1">1</TextBox>
+            <Label Width="208" Height="27" Grid.Row="2" Grid.Column="0">Коэффициент отражения:</Label>
+            <TextBox x:Name="Alpha" Width="149" Height="20" Grid.Row="2" Grid.Column="1">1</TextBox>
 
-			<Label Width="208" Height="27" Grid.Row="3" Grid.Column="0">Коэффициент сжатия:</Label>
-			<TextBox Name="Beta" Width="149" Height="20" Grid.Row="3" Grid.Column="1">0,5</TextBox>
+            <Label Width="208" Height="27" Grid.Row="3" Grid.Column="0">Коэффициент сжатия:</Label>
+            <TextBox x:Name="Beta" Width="149" Height="20" Grid.Row="3" Grid.Column="1">0,5</TextBox>
 
-			<Label Width="208" Height="27" Grid.Row="4" Grid.Column="0">Коэффициент растяжения:</Label>
-			<TextBox Name="Gamma" Width="149" Height="20" Grid.Row="4" Grid.Column="1">2</TextBox>
+            <Label Width="208" Height="27" Grid.Row="4" Grid.Column="0">Коэффициент растяжения:</Label>
+            <TextBox x:Name="Gamma" Width="149" Height="20" Grid.Row="4" Grid.Column="1">2</TextBox>
 
-			<Label Width="208" Height="27" Grid.Row="5" Grid.Column="0">Эпсилон:</Label>
-            <TextBox Name="Epsilon" Width="149" Height="20" Grid.Row="5" Grid.Column="1">0,05</TextBox>
+            <Label Width="208" Height="27" Grid.Row="5" Grid.Column="0">Эпсилон:</Label>
+            <TextBox x:Name="Epsilon" Width="149" Height="20" Grid.Row="5" Grid.Column="1">0,05</TextBox>
         </Grid>
 
-		<Grid Name="Btn" Margin="336,469,336,37">
-			<Grid.RowDefinitions>
-				<RowDefinition></RowDefinition>
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition></ColumnDefinition>
-				<ColumnDefinition></ColumnDefinition>
+        <Grid Name="Btn" Margin="336,469,336,37">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
-			</Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-			<Button Name="Test1" Width="100" Height="30" Grid.Row="0" Grid.Column="0" Click="Test1_Click">Тест 1</Button>
-			<Button Name="Test2" Width="100" Height="30" Grid.Row="0" Grid.Column="1" Click="Test2_Click">Тест 2</Button>
-            <Button Name="NewTest" Width="100" Height="30" Grid.Row="0" Grid.Column="2" Click="NewTest_Click">Новый тест</Button>
-		</Grid>
-        
+            <Button Name="Test1" Width="100" Height="30" Grid.Row="0" Grid.Column="0" Click="Test1_Click">Тест 1</Button>
+            <Button Name="Test2" Width="100" Height="30" Grid.Row="0" Grid.Column="1" Click="Test2_Click">Тест 2</Button>
+        </Grid>
+
     </Grid>
 </Window>
